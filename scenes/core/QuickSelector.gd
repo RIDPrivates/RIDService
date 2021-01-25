@@ -28,7 +28,6 @@ func _draw():
 		)
 
 		
-		update()
 		button_set.set_position(pos)
 
 enum ShortcutMode{
@@ -39,8 +38,8 @@ enum ShortcutMode{
 
 signal done(selected, choice)
 
-func _physics_process(delta):
-	self._draw()
+func _process(delta):
+	update()
 
 func _ready():
 	button_set = VBoxContainer.new()
