@@ -1,0 +1,26 @@
+[gd_resource type="Theme" load_steps=6 format=2]
+
+[ext_resource path="res://assets/Electrolize-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/default_style.tres" type="StyleBox" id=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 1, 1, 1, 0.435294 )
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 1, 1, 1, 0.184314 )
+draw_center = false
+shadow_color = Color( 1, 1, 1, 0.6 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 26
+outline_color = Color( 1, 1, 1, 0.282353 )
+font_data = ExtResource( 1 )
+
+[resource]
+default_font = SubResource( 3 )
+Button/colors/font_color = Color( 1, 1, 1, 1 )
+Button/styles/hover = SubResource( 1 )
+Button/styles/normal = SubResource( 2 )
+Label/styles/normal = ExtResource( 2 )
+LineEdit/styles/normal = ExtResource( 2 )

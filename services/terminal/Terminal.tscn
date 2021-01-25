@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://services/terminal/Terminal.gd" type="Script" id=1]
+[ext_resource path="res://scenes/core/ToolKit.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/default.tres" type="Theme" id=3]
+[ext_resource path="res://services/terminal/LineEdit.gd" type="Script" id=4]
+[ext_resource path="res://services/terminal/Buffer.gd" type="Script" id=5]
+
+[node name="Terminal" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+focus_neighbour_left = NodePath("CommandPrompt")
+focus_next = NodePath("CommandPrompt")
+theme = ExtResource( 3 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ToolKit" parent="." instance=ExtResource( 2 )]
+mouse_filter = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Buffer" type="RichTextLabel" parent="VBoxContainer"]
+margin_right = 1024.0
+margin_bottom = 564.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_following = true
+script = ExtResource( 5 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 568.0
+margin_right = 1024.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+margin_right = 57.0
+margin_bottom = 32.0
+text = "RID>"
+
+[node name="Input" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
+margin_left = 61.0
+margin_right = 1024.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+script = ExtResource( 4 )
