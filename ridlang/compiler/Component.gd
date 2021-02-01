@@ -34,11 +34,15 @@ class Component extends Object:
 		self.name = name
 
 class Value extends Component:
-	func _init(name, necessity).(name, necessity):
+	func _init(name, necessity=true).(name, necessity):
 		pass
 
 class Print extends Component:
-	func _init(name, necessity).(name, necessity):
+	func _init(name, necessity=true).(name, necessity):
+		pass
+
+class Text extends Component:
+	func _init(name, necessity=true).(name, necessity):
 		pass
 
 class Pattern extends Object:
@@ -54,10 +58,9 @@ class Pattern extends Object:
 		self.pattern_components = components
 		self.action = action
 
-	func fill(code):
-		for code_component in code.split(" "):
-			print(code_component)
-	func run(code):
+	func fill(lines):
+		for code_component in 
+	func run():
 		pass
 	func match(code):
 		return true
