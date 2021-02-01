@@ -1,7 +1,7 @@
 extends Control
 
 onready var content = get_node("Content")
-onready var compiler = load("res://ridlang/components/Component.gd")
+onready var compiler = load("res://ridlang/compiler/Compiler.gd")
 onready var quick_selector = load("res://scenes/core/QuickSelector.tscn").instance()
 onready var ridbash_compiler = load("res://services/terminal/ridbash/Compiler.gd")
 var start_size = Vector2(800, 500)

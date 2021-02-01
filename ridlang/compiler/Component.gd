@@ -4,10 +4,6 @@ const NECESSARY = true
 const UNNECESSARY = false
 
 func _ready():
-	var example_code = """
-		Define pattern [print $value]:
-			call \"print\" with value)
-		"""
 	var example = Pattern.new(
 		[
 			Print.new(
@@ -57,3 +53,11 @@ class Pattern extends Object:
 				self.components_map[component.name] = component
 		self.pattern_components = components
 		self.action = action
+
+	func fill(code):
+		for code_component in code.split(" "):
+			print(code_component)
+	func run(code):
+		pass
+	func match(code):
+		return true
