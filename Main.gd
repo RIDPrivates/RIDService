@@ -1,8 +1,7 @@
 extends Control
 
-onready var tool_kit = get_node("ToolKit")
 onready var content = get_node("Content")
-
+onready var compiler = load("res://ridlang/components/Component.gd")
 onready var quick_selector = load("res://scenes/core/QuickSelector.tscn").instance()
 onready var ridbash_compiler = load("res://services/terminal/ridbash/Compiler.gd")
 var start_size = Vector2(800, 500)
@@ -12,10 +11,10 @@ func _ready():
 	OS.window_borderless = true
 	get_tree().get_root().set_transparent_background(true)
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	tool_kit.slide(OS, "window_size", Vector2(0, 0), start_size)
-	tool_kit.slide(OS, "window_position", Vector2(0, 0), OS.get_screen_size()/2 - start_size/2)
+	ToolKit.slide(OS, "window_size", Vector2(0, 0), start_size)
+	ToolKit.slide(OS, "window_position", Vector2(0, 0), OS.get_screen_size()/2 - start_size/2)
 	# Test
-	
+	compiler.new()._ready()
 	var _size = get_size()
 	_size.x /= 8
 	quick_selector.set_size(_size)
@@ -49,47 +48,47 @@ func _input(event):
 		if event.is_action_pressed("ui_down"):
 			var x = OS.get_screen_size().x/2 - start_size.x/2
 			var y = OS.get_screen_size().y - start_size.y
-			tool_kit.slide(OS, "window_position", OS.window_position, Vector2(x, y))
+			ToolKit.slide(OS, "window_position", OS.window_position, Vector2(x, y))
 			
 		if event.is_action_pressed("ui_up"):
 			var x = OS.get_screen_size().x/2 - start_size.x/2
 			var y = 0
-			tool_kit.slide(OS, "window_position", OS.window_position, Vector2(x, y))
+			ToolKit.slide(OS, "window_position", OS.window_position, Vector2(x, y))
 			
 		if event.is_action_pressed("ui_center"):
 			var x = OS.get_screen_size().x/2 - start_size.x/2
 			var y = OS.get_screen_size().y/2 - start_size.y/2
-			tool_kit.slide(OS, "window_position", OS.window_position, Vector2(x, y))
+			ToolKit.slide(OS, "window_position", OS.window_position, Vector2(x, y))
 
 		if event.is_action_pressed("ui_left_up"):
 			var x = 0
 			var y = 0
-			tool_kit.slide(OS, "window_position", OS.window_position, Vector2(x, y))
+			ToolKit.slide(OS, "window_position", OS.window_position, Vector2(x, y))
 
 		if event.is_action_pressed("ui_left_down"):
 			var x = 0
 			var y = OS.get_screen_size().y - start_size.y
-			tool_kit.slide(OS, "window_position", OS.window_position, Vector2(x, y))
+			ToolKit.slide(OS, "window_position", OS.window_position, Vector2(x, y))
 
 		if event.is_action_pressed("ui_right_up"):
 			var x = OS.get_screen_size().x - start_size.x
 			var y = 0
-			tool_kit.slide(OS, "window_position", OS.window_position, Vector2(x, y))
+			ToolKit.slide(OS, "window_position", OS.window_position, Vector2(x, y))
 
 		if event.is_action_pressed("ui_right_down"):
 			var x = OS.get_screen_size().x - start_size.x
 			var y = OS.get_screen_size().y - start_size.y
-			tool_kit.slide(OS, "window_position", OS.window_position, Vector2(x, y))
+			ToolKit.slide(OS, "window_position", OS.window_position, Vector2(x, y))
 
 		if event.is_action_pressed("ui_left"):
 			var x = 0
 			var y = OS.get_screen_size().y/2 - start_size.y/2
-			tool_kit.slide(OS, "window_position", OS.window_position, Vector2(x, y))
+			ToolKit.slide(OS, "window_position", OS.window_position, Vector2(x, y))
 
 		if event.is_action_pressed("ui_right"):
 			var x = OS.get_screen_size().x - start_size.x
 			var y = OS.get_screen_size().y/2 - start_size.y/2
-			tool_kit.slide(OS, "window_position", OS.window_position, Vector2(x, y))
+			ToolKit.slide(OS, "window_position", OS.window_position, Vector2(x, y))
 
 func _notification(what):
 	if what == MainLoop.NOTIFICATION_WM_FOCUS_IN:

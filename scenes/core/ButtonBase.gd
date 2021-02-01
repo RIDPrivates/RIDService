@@ -32,8 +32,8 @@ func _draw():
 
 func _process(delta):
 	if self.is_hovered():
-		hover_rate += float(1-hover_rate) / 3
+		hover_rate += float(1-hover_rate) / 10
 	else:
-		hover_rate -= float(hover_rate) / 3
+		hover_rate -= float(hover_rate) / 10
 	self.set_size(size)
 	self.update()

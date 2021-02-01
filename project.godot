@@ -23,6 +23,7 @@ config/icon="res://assets/icon.png"
 
 Assets="*res://assets/Assets.gd"
 Services="*res://services/Services.gd"
+ToolKit="*res://scenes/core/ToolKit.tscn"
 
 [display]
 

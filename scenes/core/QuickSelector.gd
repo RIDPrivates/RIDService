@@ -1,7 +1,6 @@
 extends "res://scenes/core/ControlBase.gd"
 
 var button_set
-onready var tool_kit = get_node("ToolKit")
 
 onready var Typer = load("res://scenes/core/Typer.tscn")
 onready var ButtonBase = load("res://scenes/core/ButtonBase.tscn")
@@ -69,10 +68,10 @@ func present(choices, shortcut_mode=ShortcutMode.AUTO):
 		button.connect("pressed", self, "_selected", [choice['text']])
 		button_set.add_child(button)
 		
-		tool_kit.slide(button, "size", button.size, Vector2(max_width,button.size.y))
+		ToolKit.slide(button, "size", button.size, Vector2(max_width,button.size.y))
 
 	grab_focus()
-	tool_kit.slide(self, "drop_rate", self.drop_rate, 1)
+	ToolKit.slide(self, "drop_rate", self.drop_rate, 1)
 	match shortcut_mode:
 		ShortcutMode:
 			pass
@@ -85,9 +84,9 @@ func retract():
 
 	for button in button_set.get_children():
 		button.clip_text = true
-		tool_kit.slide(button, "size", button.size, Vector2(0, button.size.y))
+		ToolKit.slide(button, "size", button.size, Vector2(0, button.size.y))
 	self.release_focus()
-	tool_kit.slide(self, "drop_rate", self.drop_rate, 0, self, "_retracted")
+	ToolKit.slide(self, "drop_rate", self.drop_rate, 0, self, "_retracted")
 
 func _retracted():
 	hide()
